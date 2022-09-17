@@ -15,15 +15,20 @@ import {AppRootStateType} from "../../state/store";
 import {addTaskTC, deleteTaskTC, updateTaskTC} from "../../state/tasks-reducer";
 import {TaskStatuses} from "../../api/todolists-api";
 import {TasksStateType} from "../../app/App";
+import { Navigate } from "react-router-dom";
 
 
 export const ToDoListsList: React.FC = () => {
 
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
+    const isLoggedIn = useSelector((state: AppRootStateType)=>state.auth.isLoggedIn)
     const dispatch = useDispatch();
 
     useEffect(()=> {
+        if(!isLoggedIn) {
+            return
+        }
         dispatch(fetchTodolists())
     }, [])
 
@@ -59,6 +64,10 @@ export const ToDoListsList: React.FC = () => {
     const addTodolist = useCallback((title: string) => {
         dispatch(addToDoListTC(title));
     }, [dispatch]);
+
+    if (!isLoggedIn) {
+        return <Navigate to={'/login'}/>
+    }
 
     return (
         <>
