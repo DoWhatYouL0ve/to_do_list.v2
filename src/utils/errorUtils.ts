@@ -4,16 +4,16 @@ import {ActionsType} from "../state/tasks-reducer";
 import {Dispatch} from "redux";
 
 
-export const handleServerAppError = <T>(data: ResponseType<T>, dispatch: Dispatch<ActionsType>) => {
+export const handleServerAppError = <T>(data: ResponseType<T>, dispatch: Dispatch) => {
     if (data.messages.length) {
-        dispatch(setAppError(data.messages[0]));
+        dispatch(setAppError({error: data.messages[0]}));
     } else {
-        dispatch(setAppError('unexpected error occurred'));
+        dispatch(setAppError({error: 'unexpected error occurred'}));
     }
-    dispatch(setAppStatus('failed'))
+    dispatch(setAppStatus({status: 'failed'}))
 }
 
-export const handleNetworkError = (error: {message: string}, dispatch: Dispatch<ActionsType>) => {
-    dispatch(setAppError(error.message ? error.message : 'unexpected error occurred'))
-    dispatch(setAppStatus('failed'))
+export const handleNetworkError = (error: {message: string}, dispatch: Dispatch) => {
+    dispatch(setAppError({error: error.message ? error.message : 'unexpected error occurred'}))
+    dispatch(setAppStatus({status: 'failed'}))
 }

@@ -22,7 +22,7 @@ export default function CustomizedSnackbars() {
         if (reason === 'clickaway') {
             return;
         }
-        dispatch(setAppError(null))
+        dispatch(setAppError({error: null}))
     };
 
     return (
