@@ -14,7 +14,7 @@ import CustomizedSnackbars from "../components/ErrorSnackBar/ErrorSnackBar";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
 import {initializedAppTC, RequestStatusType} from "../state/app-reducer";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import {logOutTC} from "../state/login-reducer";
 
@@ -41,9 +41,9 @@ function App() {
     if (!isInitialized) {
         return <CircularProgress style={{position: 'fixed', top: '40%', textAlign: 'center', marginLeft: '48%'}}/>
     }
-
+    console.log('test')
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className="App">
                 <CustomizedSnackbars/>
                 <AppBar position="static">
@@ -67,7 +67,7 @@ function App() {
                     </Routes>
                 </Container>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
