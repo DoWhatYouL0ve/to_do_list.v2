@@ -80,15 +80,6 @@ export const changeTodolistTitleTC = (id: string, title: string) => (dispatch: D
         })
 }
 
-// Types
-export type RemoveTodolistActionType = ReturnType<typeof removeTodolistAC>
-export type AddTodolistActionType = ReturnType<typeof addTodolistAC>
-export type ChangeTodolistTitleActionType = ReturnType<typeof changeTodolistTitleAC>
-export type ChangeTodolistFilterActionType = ReturnType<typeof changeTodolistFilterAC>
-export type SetTodolistActionType = ReturnType<typeof setTodolistsAC>
-export type ChangeToDoListEntityStatusType = ReturnType<typeof changeToDoListEntityStatusAC>
-
-
 export type FilterValuesType = 'all' | 'active' | 'completed';
 export type TodolistDomainType = TodolistType & {
     filter: FilterValuesType
