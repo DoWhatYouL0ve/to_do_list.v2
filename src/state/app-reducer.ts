@@ -12,7 +12,7 @@ const initialState: InitialStateType = {
     isInitialized: false
 }
 
-type InitialStateType = {
+export type InitialStateType = {
     status: RequestStatusType
     error: string | null
     isInitialized: boolean

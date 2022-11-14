@@ -44,6 +44,10 @@ const slice = createSlice({
                 tasks.splice(index, 1)
             }
         },
+        // if inside AC only one property, it can be used payload directly
+        /*addTaskAC(state, action: PayloadAction<TaskType>) {
+            state[action.payload.todoListId].unshift(action.payload)
+        },*/
         addTaskAC(state, action: PayloadAction<{task: TaskType}>) {
             state[action.payload.task.todoListId].unshift(action.payload.task)
         },

@@ -41,7 +41,6 @@ function App() {
     if (!isInitialized) {
         return <CircularProgress style={{position: 'fixed', top: '40%', textAlign: 'center', marginLeft: '48%'}}/>
     }
-    console.log('test')
     return (
         <HashRouter>
             <div className="App">
