@@ -12,7 +12,7 @@ import {
 import {AddItemForm} from "../../components/AddItemForm/AddItemForm";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../state/store";
-import {addTaskTC, deleteTaskTC, updateTaskTC} from "../../state/tasks-reducer";
+import {addTaskTC, deleteTask, updateTaskTC} from "../../state/tasks-reducer";
 import {TaskStatuses} from "../../api/todolists-api";
 import {TasksStateType} from "../../app/App";
 import { Navigate } from "react-router-dom";
@@ -33,7 +33,7 @@ export const ToDoListsList: React.FC = () => {
     }, [])
 
     const removeTask = useCallback(function (id: string, todolistId: string) {
-        dispatch(deleteTaskTC(todolistId, id))
+        dispatch(deleteTask({todolistId, id}))
     }, []);
 
     const addTask = useCallback(function (title: string, todolistId: string) {

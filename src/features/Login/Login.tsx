@@ -8,14 +8,14 @@ import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {useFormik} from "formik";
-import {loginTC} from "../../state/login-reducer";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../state/store";
+import {login} from "../../state/login-reducer";
+import {useSelector} from "react-redux";
+import {AppRootStateType, useAppDispatch} from "../../state/store";
 import {Navigate} from "react-router-dom";
 
 export const Login = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const isLoggedIn = useSelector((state: AppRootStateType) => state.auth.isLoggedIn)
 
@@ -37,8 +37,16 @@ export const Login = () => {
             password: '',
             rememberMe: false
         },
-        onSubmit: values => {
-            dispatch(loginTC(values))
+        onSubmit: async (values, formikHelpers) => {
+            const action = await dispatch(login(values))
+            if (login.rejected.match(action)) {
+                if (action.payload?.fieldsErrors?.length) {
+                    const error = action.payload?.fieldsErrors[0]
+                    formikHelpers.setFieldError(error.field, error.error)
+                }else {
+
+                }
+            }
         },
     });
     if (isLoggedIn) {
