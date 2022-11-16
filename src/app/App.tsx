@@ -13,10 +13,11 @@ import {CircularProgress, LinearProgress} from "@material-ui/core";
 import CustomizedSnackbars from "../components/ErrorSnackBar/ErrorSnackBar";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
-import {initializedAppTC, RequestStatusType} from "../state/app-reducer";
+import {initializedApp, RequestStatusType} from "../state/app-reducer";
 import {BrowserRouter, HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Login} from "../features/Login/Login";
-import {logOutTC} from "../state/login-reducer";
+import {logout} from "../state/login-reducer";
+
 
 
 export type TasksStateType = {
@@ -31,11 +32,11 @@ function App() {
     const isLoggedIn = useSelector((state: AppRootStateType) => state.auth.isLoggedIn)
 
     useEffect(()=>{
-        dispatch(initializedAppTC())
+        dispatch(initializedApp())
     },[])
 
     const logOut = useCallback(() => {
-        dispatch(logOutTC())
+        dispatch(logout())
     }, [])
 
     if (!isInitialized) {
