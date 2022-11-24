@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect} from 'react'
-import './App.css';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -14,7 +13,7 @@ import CustomizedSnackbars from "../components/ErrorSnackBar/ErrorSnackBar";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
 import {initializedApp, RequestStatusType} from "../state/app-reducer";
-import {BrowserRouter, HashRouter, Navigate, Route, Routes} from "react-router-dom";
+import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import {logout} from "../state/login-reducer";
 
