@@ -7,22 +7,21 @@ import {
     changeTodolistFilterAC, changeTodolistTitle, deleteToDoList,
     fetchTodolists,
     FilterValuesType,
-    TodolistDomainType
 } from "../../state/todolists-reducer";
 import {AddItemForm} from "../../components/AddItemForm/AddItemForm";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../state/store";
 import {addTask, deleteTask, updateTask} from "../../state/tasks-reducer";
 import {TaskStatuses} from "../../api/todolists-api";
-import {TasksStateType} from "../../app/App";
 import { Navigate } from "react-router-dom";
+import {selectors} from "../../state";
 
 
 export const ToDoListsList: React.FC = () => {
 
-    const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
-    const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
-    const isLoggedIn = useSelector((state: AppRootStateType)=>state.auth.isLoggedIn)
+    const todolists = useSelector(selectors.selectTodoLists)
+    const tasks = useSelector(selectors.selectTasks)
+    const isLoggedIn = useSelector(selectors.selectIsLoggedIn)
+
     const dispatch = useDispatch();
 
     useEffect(()=> {

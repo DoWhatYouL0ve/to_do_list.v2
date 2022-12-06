@@ -1,6 +1,6 @@
 import { tasksReducer } from './tasks-reducer';
 import { todolistsReducer } from './todolists-reducer';
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 import {appReducer} from "./app-reducer";
 import {authReducer} from "./login-reducer";
@@ -25,4 +25,5 @@ export const store = configureStore({
 export type AppRootStateType = ReturnType<typeof rootReducer>
 type AppDispatchType = typeof  store.dispatch
 export const useAppDispatch = () => useDispatch<AppDispatchType>()
+
 

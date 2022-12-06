@@ -11,24 +11,21 @@ import {ToDoListsList} from "../features/Todolists/ToDoListsList";
 import {CircularProgress, LinearProgress} from "@material-ui/core";
 import CustomizedSnackbars from "../components/ErrorSnackBar/ErrorSnackBar";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../state/store";
-import {initializedApp, RequestStatusType} from "../state/app-reducer";
+import {initializedApp} from "../state/app-reducer";
 import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import {logout} from "../state/login-reducer";
-
-
+import {selectors} from "../state";
 
 export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
-
 function App() {
     const dispatch = useDispatch()
-    const status = useSelector<AppRootStateType, RequestStatusType>((state => state.app.status))
-    const isInitialized = useSelector<AppRootStateType, boolean>((state => state.app.isInitialized))
-    const isLoggedIn = useSelector((state: AppRootStateType) => state.auth.isLoggedIn)
+    const status = useSelector(selectors.selectStatus)
+    const isInitialized = useSelector(selectors.selectIsInitialized)
+    const isLoggedIn = useSelector(selectors.selectIsLoggedIn)
 
     useEffect(()=>{
         dispatch(initializedApp())

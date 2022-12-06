@@ -4,6 +4,7 @@ import MuiAlert, {AlertProps} from '@mui/material/Alert';
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../state/store";
 import {setAppError} from "../../state/app-reducer";
+import {selectors} from "../../state";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -14,7 +15,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 export default function CustomizedSnackbars() {
 
-    const error = useSelector<AppRootStateType, string | null>((state)=>state.app.error)
+    const error = useSelector(selectors.selectError)
     const dispatch = useDispatch()
     const isOpen = error !== null
 
