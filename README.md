@@ -14,6 +14,18 @@ This application is a learning cards application which allows users to create th
 
 <hr/>
 
+## Usage:
+
+To use the project you need to Sign Up firstly or  use common test account credentials:
+
+Email: free@samuraijs.com
+
+Password: free.
+
+After that just Sing In and go to main page. There you will have a possibility to create your own boards with tasks.
+
+<hr/>
+
 ## Built With:
 
 - React
@@ -25,12 +37,6 @@ This application is a learning cards application which allows users to create th
 - Axios
 - Material UI
 - Jest
-
-<hr/>
-
-## Usage:
-
-To use the project you need to Sign Up firstly. After that just Sing In and go to main page. There you will have a possibility to create your own boards with tasks.
 
 <hr/>
 
